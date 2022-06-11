@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+def initialize_tweets
+  tweets = [
+    {
+      content: 'My first ever post.'
+    },
+    {
+      content: 'Another one bites the dust.'
+    },
+    {
+      content: 'Third time\'s a charm!'
+    }
+  ]
+
+  tweets.each do |tweet|
+    Tweet.create(**tweet)
+  end
+end
+
+initialize_tweets
