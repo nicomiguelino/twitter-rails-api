@@ -6,24 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-def initialize_tweets
-  tweets = [
-    {
-      content: 'My first ever post.'
-    },
-    {
-      content: 'Another one bites the dust.'
-    },
-    {
-      content: 'Third time\'s a charm!'
-    }
-  ]
-
-  tweets.each do |tweet|
-    Tweet.create(**tweet)
-  end
-end
-
 def initialize_users
   users = [
     {
@@ -46,7 +28,32 @@ def initialize_users
   users.each do |user|
     User.create(**user)
   end
+
+  return User.all
 end
 
-initialize_tweets
-initialize_users
+def initialize_tweets(users)
+  tweets = [
+    {
+      content: 'My first ever post.',
+      user_id: users[0].id
+    },
+    {
+      content: 'Another one bites the dust.',
+      user_id: users[1].id
+    },
+    {
+      content: 'Third time\'s a charm!',
+      user_id: users[2].id
+    }
+  ]
+
+  tweets.each do |tweet|
+    Tweet.create(**tweet)
+  end
+
+  return Tweet.all
+end
+
+users = initialize_users
+initialize_tweets(users)
