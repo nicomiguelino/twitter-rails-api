@@ -6,54 +6,47 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-def initialize_users
+def initialize_tweets
   users = [
     {
       username: 'mike.wheeler',
       email: 'mike.wheeler@hawkins.com',
-      password: 'eleven'
+      password: 'eleven',
+      tweets: [
+        {
+          content: 'My first post.'
+        },
+        {
+          content: 'Another one.'
+        }
+      ]
     },
     {
       username: 'will.byers',
       email: 'will.byers@hawkins.com',
-      password: 'will_the_wise'
+      password: 'will_the_wise',
     },
     {
       username: 'dustin.henderson',
       email: 'dustin.henderson@hawkins.com',
-      password: 'pearly_whites'
+      password: 'pearly_whites',
+      tweets: [
+        {
+          content: 'Lucas, do you copy?!'
+        }
+      ]
     }
   ]
 
   users.each do |user|
-    User.create(**user)
-  end
+    new_user = User.create(**user.except(:tweets))
 
-  return User.all
+    if user.has_key? :tweets
+      user[:tweets].each do |tweet|
+        new_user.tweets.create(**tweet)
+      end
+    end
+  end
 end
 
-def initialize_tweets(users)
-  tweets = [
-    {
-      content: 'My first ever post.',
-      user_id: users[0].id
-    },
-    {
-      content: 'Another one bites the dust.',
-      user_id: users[1].id
-    },
-    {
-      content: 'Third time\'s a charm!',
-      user_id: users[2].id
-    }
-  ]
-
-  tweets.each do |tweet|
-    Tweet.create(**tweet)
-  end
-
-  return Tweet.all
-end
-
-users = initialize_users
-initialize_tweets(users)
+initialize_tweets
