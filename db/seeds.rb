@@ -24,4 +24,29 @@ def initialize_tweets
   end
 end
 
+def initialize_users
+  users = [
+    {
+      username: 'mike.wheeler',
+      email: 'mike.wheeler@hawkins.com',
+      password: 'eleven'
+    },
+    {
+      username: 'will.byers',
+      email: 'will.byers@hawkins.com',
+      password: 'will_the_wise'
+    },
+    {
+      username: 'dustin.henderson',
+      email: 'dustin.henderson@hawkins.com',
+      password: 'pearly_whites'
+    }
+  ]
+
+  users.each do |user|
+    User.create(**user)
+  end
+end
+
 initialize_tweets
+initialize_users

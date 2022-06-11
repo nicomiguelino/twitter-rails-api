@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/tweets/', to: 'tweets#list', as: 'tweets'
+  get '/users/', to: 'users#list', as: 'users'
 end
