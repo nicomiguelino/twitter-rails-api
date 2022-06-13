@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :authorize_request
+
   def list
     render json: Tweet.all, except: [:user_id], include: {
       user: {
@@ -8,9 +10,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    # TODO: Make the user dynamic.
-    user = User.where(username: 'dustin.henderson').first
-    tweet = user.tweets.create(**tweets_create_params)
+    tweet = @current_user.tweets.create(**tweets_create_params)
     render json: tweet
   end
 

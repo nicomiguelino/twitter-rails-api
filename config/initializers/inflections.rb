@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
+
+# These rules override the default inflections.
+Rails.autoloaders.each do |autoloader|
+  autoloader.inflector.inflect(
+    "json_web_token" => "JSONWebToken"
+  )
+end
