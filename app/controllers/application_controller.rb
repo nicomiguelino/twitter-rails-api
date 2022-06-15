@@ -1,22 +1,19 @@
-class MissingJWTCookieError < StandardError
-  def initialize(msg='JSON Web Token not found.')
-    super
-  end
-end
-
 class ApplicationController < ActionController::API
   include ActionController::Cookies
+  include Core::Exceptions
 
   def authorize_request
+    exceptions = [
+      ActiveRecord::RecordNotFound,
+      JWT::DecodeError,
+      MissingJWTCookieError
+    ]
+
     begin
       token = get_authorization_token
-      @decoded = JSONWebToken.decode(token)
+      @decoded = Core::JSONWebToken.decode(token)
       @current_user = User.find(@decoded[:user_id])
-    rescue ActiveRecord::RecordNotFound => e
-      render json: { error: e.message }, status: :unauthorized
-    rescue JWT::DecodeError => e
-      render json: { error: e.message }, status: :unauthorized
-    rescue MissingJWTCookieError => e
+    rescue *exceptions => e
       render json: { error: e.message }, status: :unauthorized
     end
   end

@@ -3,7 +3,7 @@ class API::AuthenticationController < ApplicationController
     user = User.find_by_email(login_params[:email])
 
     if user&.authenticate(login_params[:password])
-      token = JSONWebToken.encode(user_id: user.id)
+      token = Core::JSONWebToken.encode(user_id: user.id)
       time = Time.now + 24.hours.to_i
 
       cookies.signed[:token] = {
