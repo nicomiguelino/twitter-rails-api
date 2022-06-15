@@ -14,6 +14,12 @@ Ruby on Rails.
 
 
 
+## GraphQL API (coming soon)
+
+Stay tuned for updates. :radio:
+
+
+
 <!-- References -->
 
 [1]: /readme/development/initial-local-development-setup-on-ubuntu-wsl-2.md
