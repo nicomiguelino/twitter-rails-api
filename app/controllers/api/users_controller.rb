@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class API::UsersController < ApplicationController
   before_action :list
 
   def list

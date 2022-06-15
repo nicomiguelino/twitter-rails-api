@@ -1,4 +1,4 @@
-class TweetsController < ApplicationController
+class API::TweetsController < ApplicationController
   before_action :authorize_request
 
   def list
