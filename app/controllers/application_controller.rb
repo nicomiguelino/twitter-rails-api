@@ -2,6 +2,8 @@ class ApplicationController < ActionController::API
   include ActionController::Cookies
   include Core::Exceptions
 
+  private
+
   def authorize_request
     exceptions = [
       ActiveRecord::RecordNotFound,
@@ -17,8 +19,6 @@ class ApplicationController < ActionController::API
       render json: { error: e.message }, status: :unauthorized
     end
   end
-
-  private
 
   def get_authorization_token
     token = cookies.signed[:token]
