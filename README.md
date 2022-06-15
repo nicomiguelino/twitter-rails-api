@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project contains the source code for a Twitter clone REST API, built using
+Ruby on Rails.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+## Documentation
 
-* Configuration
 
-* Database creation
+### Development
 
-* Database initialization
+- [Initial local development setup on Ubuntu (WSL 2)][1]
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+<!-- References -->
 
-* ...
+[1]: /readme/development/initial-local-development-setup-on-ubuntu-wsl-2.md
