@@ -1,6 +1,12 @@
-class MissingAuthorizationHeaderError < StandardError; end
+class MissingJWTCookieError < StandardError
+  def initialize(msg='JSON Web Token not found.')
+    super
+  end
+end
 
 class ApplicationController < ActionController::API
+  include ActionController::Cookies
+
   def authorize_request
     begin
       token = get_authorization_token
@@ -10,7 +16,7 @@ class ApplicationController < ActionController::API
       render json: { error: e.message }, status: :unauthorized
     rescue JWT::DecodeError => e
       render json: { error: e.message }, status: :unauthorized
-    rescue MissingAuthorizationHeaderError => e
+    rescue MissingJWTCookieError => e
       render json: { error: e.message }, status: :unauthorized
     end
   end
@@ -18,14 +24,12 @@ class ApplicationController < ActionController::API
   private
 
   def get_authorization_token
-    authorization_header = request.headers['Authorization']
+    token = cookies.signed[:token]
 
-    if !authorization_header
-      raise MissingAuthorizationHeaderError.new(
-        'Missing \'Authorization\' header.'
-      )
+    if !token
+      raise MissingJWTCookieError.new
     end
 
-    return authorization_header.split(' ').last
+    return token
   end
 end
