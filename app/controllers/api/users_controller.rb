@@ -1,5 +1,5 @@
 class API::UsersController < ApplicationController
-  before_action :list
+  before_action :authorize_request
 
   def list
     render json: User.all, except: [:password_digest], include: {
