@@ -13,7 +13,7 @@ The following is already installed on your local development machine.
 
 
 
-## Database Setup
+## Database setup
 
 
 ### Open up a PostgreSQL shell
@@ -37,10 +37,36 @@ Type "help" for help.
 postgres=#
 ```
 
-This page is under construction. Stay tuned for more updates. :construction:
+
+### Initial PostgreSQL setup
+
+You'll only need to do this once. There are two possible ways for doing so.
+Before going further, make sure that you have your `psql` shell open.
+
+#### Option 1: Create a user
+
+Execute the following SQL statements:
+
+```sql
+-- The password should be inside single quotes.
+CREATE USER <username> WITH PASSWORD '<password>';
+```
+
+Now quit the `psql` shell by entering `\q`. You should now be back to your
+primary session.
+
+#### Option 2: Create a database and a user
+
+If [Option 1][2] didn't work, you may want to try this method.
+
+
+### Initialize databases and tables by running built-in Rails commands
+
+This page is under construction. Stay tuned for more updates. :radio:
 
 
 
 <!-- References -->
 
 [1]: https://docs.microsoft.com/en-us/windows/wsl/
+[2]: #option-1-create-a-user
