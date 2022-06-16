@@ -1,5 +1,15 @@
 class API::AuthenticationController < ApplicationController
-  before_action :authorize_request, except: [:login]
+  before_action :authorize_request, except: [:login, :sign_up]
+
+  def sign_up
+    user = User.new(**sign_up_params)
+
+    if user.save
+      render json: user, except: [:password_digest]
+    else
+      render json: { errors: user.errors }, status: :bad_request
+    end
+  end
 
   def login
     user = User.find_by_email(login_params[:email])
@@ -35,6 +45,10 @@ class API::AuthenticationController < ApplicationController
   end
 
   private
+
+  def sign_up_params
+    params.require(:authentication).permit(:username, :email, :password)
+  end
 
   def login_params
     params.require(:authentication).permit(:email, :password)
