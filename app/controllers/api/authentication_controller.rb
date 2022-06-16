@@ -7,7 +7,7 @@ class API::AuthenticationController < ApplicationController
     if user.save
       render json: user, except: [:password_digest]
     else
-      render json: { error: 'Sign-up failed.' }, status: :bad_request
+      render json: { errors: user.errors }, status: :bad_request
     end
   end
 
