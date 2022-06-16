@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   namespace :api do
+    post '/auth/sign_up', to: 'authentication#sign_up', as: 'sign_up'
     post '/auth/login', to: 'authentication#login', as: 'login'
     post '/auth/logout', to: 'authentication#logout', as: 'logout'
 
