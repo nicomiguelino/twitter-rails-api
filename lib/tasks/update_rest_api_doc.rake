@@ -1,9 +1,7 @@
 desc 'Update the REST API doc template based on doc/openapi.yaml'
 
-# TODO: Consider yarn:install as a dependency task.
-# TODO: Make this task more flexible.
 namespace :tra do
-  task :generate_openapi_yaml do
+  task generate_openapi_yaml: [:'yarn:install'] do
     system 'OPTION=1 bundle exec rspec'
   end
 
