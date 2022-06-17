@@ -19,4 +19,29 @@ paths:
                 type: array
                 items:
                   nullable: true
-              example: []
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    email:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    name:
+                      nullable: true
+                    tweets:
+                      type: array
+                      items:
+                        nullable: true
+              example:
+              - id: 2
+                username: dustin.henderson
+                email: dustin.henderson@hawkins.com
+                created_at: '2022-06-17T10:44:30.677Z'
+                updated_at: '2022-06-17T10:44:30.677Z'
+                name:
+                tweets: []
