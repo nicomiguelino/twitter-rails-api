@@ -1,0 +1,22 @@
+---
+openapi: 3.0.3
+info:
+  title: twitter-rails-api
+  version: 1.0.0
+servers: []
+paths:
+  "/api/users":
+    get:
+      summary: list
+      tags:
+      - API::User
+      responses:
+        '200':
+          description: returns a list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  nullable: true
+              example: []

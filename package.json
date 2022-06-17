@@ -1,0 +1,11 @@
+{
+  "name": "twitter-rails-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nicomiguelino/twitter-rails-api.git",
+  "author": "nicomiguelino <nicomiguelino2014@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "redoc-cli": "0.13.16"
+  }
+}

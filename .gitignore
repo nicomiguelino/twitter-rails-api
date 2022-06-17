@@ -31,3 +31,24 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore relevant NodeJS files.
+/node_modules/
+
+
+### yarn ###
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+
+.yarn/*
+!.yarn/releases
+!.yarn/patches
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# if you are NOT using Zero-installs, then:
+# comment the following lines
+# !.yarn/cache
+
+# and uncomment the following lines
+.pnp.*

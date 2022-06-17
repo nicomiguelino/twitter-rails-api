@@ -11,6 +11,7 @@ Ruby on Rails.
 ### Development
 
 - [Initial local development setup on Ubuntu (WSL 2)][1]
+- [Updating the REST API Documentation][2]
 
 
 
@@ -23,3 +24,4 @@ Stay tuned for updates. :radio:
 <!-- References -->
 
 [1]: /readme/development/initial-local-development-setup-on-ubuntu-wsl-2.md
+[2]: /readme/development/updating-the-rest-api-documentation.md

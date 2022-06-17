@@ -53,3 +53,6 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'rspec-openapi', '~> 0.5.0'
+end
