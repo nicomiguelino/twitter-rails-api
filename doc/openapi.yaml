@@ -5,6 +5,79 @@ info:
   version: 1.0.0
 servers: []
 paths:
+  "/api/tweets":
+    get:
+      summary: list
+      tags:
+      - API::Tweet
+      responses:
+        '200':
+          description: returns a list of Tweets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    content:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        username:
+                          type: string
+                        email:
+                          type: string
+                        name:
+                          nullable: true
+              example:
+              - id: 43
+                content: My first tweet. Welcome to Twitter.
+                created_at: '2022-06-19T14:16:45.729Z'
+                updated_at: '2022-06-19T14:16:45.729Z'
+                user:
+                  id: 69
+                  username: dustin.henderson
+                  email: dustin.henderson@hawkins.com
+                  name:
+              - id: 44
+                content: Anothah one.
+                created_at: '2022-06-19T14:16:45.731Z'
+                updated_at: '2022-06-19T14:16:45.731Z'
+                user:
+                  id: 69
+                  username: dustin.henderson
+                  email: dustin.henderson@hawkins.com
+                  name:
+              - id: 45
+                content: Third time's a charm.
+                created_at: '2022-06-19T14:16:45.732Z'
+                updated_at: '2022-06-19T14:16:45.732Z'
+                user:
+                  id: 69
+                  username: dustin.henderson
+                  email: dustin.henderson@hawkins.com
+                  name:
+        '401':
+          description: returns an error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: JSON Web Token not found.
   "/api/users":
     get:
       summary: list
@@ -18,7 +91,6 @@ paths:
               schema:
                 type: array
                 items:
-                  nullable: true
                   type: object
                   properties:
                     id:
@@ -38,10 +110,21 @@ paths:
                       items:
                         nullable: true
               example:
-              - id: 2
+              - id: 70
                 username: dustin.henderson
                 email: dustin.henderson@hawkins.com
-                created_at: '2022-06-17T10:44:30.677Z'
-                updated_at: '2022-06-17T10:44:30.677Z'
+                created_at: '2022-06-19T14:16:45.746Z'
+                updated_at: '2022-06-19T14:16:45.746Z'
                 name:
                 tweets: []
+        '401':
+          description: returns an error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: JSON Web Token not found.
