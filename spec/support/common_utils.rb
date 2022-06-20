@@ -1,4 +1,12 @@
 RSpec.shared_context 'authentication' do
+  def sign_up_params(credentials, except: [])
+    { authentication: credentials.except(*except) }
+  end
+
+  def login_params(credentials, except: [])
+    { authentication: credentials.except(:username, *except) }
+  end
+
   before :each do |example|
     if example.metadata[:skip_login]
       next
@@ -12,7 +20,6 @@ RSpec.shared_context 'authentication' do
 
     @user = User.create(**credentials)
 
-    post api_login_path,
-      params: { authentication: credentials.except(:username) }
+    post api_login_path, params: sign_up_params(credentials)
   end
 end

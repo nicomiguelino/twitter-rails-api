@@ -1,16 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'API::Authentications', type: :request do
-  # TODO: Move to a separate file.
-  def sign_up_params(credentials, except: [])
-    { authentication: credentials.except(*except) }
-  end
-
-  # TODO: Move to a separate file.
-  def login_params(credentials, except: [])
-    { authentication: credentials.except(:username, *except) }
-  end
-
   before :each do
     @credentials = {
       username: 'steve.harrington',

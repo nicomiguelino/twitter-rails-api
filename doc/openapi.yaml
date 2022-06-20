@@ -51,11 +51,11 @@ paths:
                   name:
                     nullable: true
               example:
-                id: 113
+                id: 148
                 username: steve.harrington
                 email: steve.harrington@hawkins.com
-                created_at: '2022-06-20T13:32:30.036Z'
-                updated_at: '2022-06-20T13:32:30.036Z'
+                created_at: '2022-06-20T13:38:57.473Z'
+                updated_at: '2022-06-20T13:38:57.473Z'
                 name:
         '400':
           description: returns error message in required fields are are not specified
@@ -110,30 +110,30 @@ paths:
                         name:
                           nullable: true
               example:
-              - id: 73
+              - id: 100
                 content: My first tweet. Welcome to Twitter.
-                created_at: '2022-06-20T13:32:30.072Z'
-                updated_at: '2022-06-20T13:32:30.072Z'
+                created_at: '2022-06-20T13:38:57.510Z'
+                updated_at: '2022-06-20T13:38:57.510Z'
                 user:
-                  id: 115
+                  id: 150
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
-              - id: 74
+              - id: 101
                 content: Anothah one.
-                created_at: '2022-06-20T13:32:30.074Z'
-                updated_at: '2022-06-20T13:32:30.074Z'
+                created_at: '2022-06-20T13:38:57.513Z'
+                updated_at: '2022-06-20T13:38:57.513Z'
                 user:
-                  id: 115
+                  id: 150
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
-              - id: 75
+              - id: 102
                 content: Third time's a charm.
-                created_at: '2022-06-20T13:32:30.075Z'
-                updated_at: '2022-06-20T13:32:30.075Z'
+                created_at: '2022-06-20T13:38:57.514Z'
+                updated_at: '2022-06-20T13:38:57.514Z'
                 user:
-                  id: 115
+                  id: 150
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
@@ -180,11 +180,11 @@ paths:
                       items:
                         nullable: true
               example:
-              - id: 116
+              - id: 151
                 username: dustin.henderson
                 email: dustin.henderson@hawkins.com
-                created_at: '2022-06-20T13:32:30.089Z'
-                updated_at: '2022-06-20T13:32:30.089Z'
+                created_at: '2022-06-20T13:38:57.530Z'
+                updated_at: '2022-06-20T13:38:57.530Z'
                 name:
                 tweets: []
         '401':
