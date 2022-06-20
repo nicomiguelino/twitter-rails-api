@@ -51,11 +51,11 @@ paths:
                   name:
                     nullable: true
               example:
-                id: 35
+                id: 49
                 username: steve.harrington
                 email: steve.harrington@hawkins.com
-                created_at: '2022-06-20T14:43:26.044Z'
-                updated_at: '2022-06-20T14:43:26.044Z'
+                created_at: '2022-06-20T14:48:32.156Z'
+                updated_at: '2022-06-20T14:48:32.156Z'
                 name:
         '400':
           description: returns error message in required fields are are not specified
@@ -183,30 +183,30 @@ paths:
                         name:
                           nullable: true
               example:
-              - id: 30
+              - id: 38
                 content: My first tweet. Welcome to Twitter.
-                created_at: '2022-06-20T14:43:26.115Z'
-                updated_at: '2022-06-20T14:43:26.115Z'
+                created_at: '2022-06-20T14:48:32.221Z'
+                updated_at: '2022-06-20T14:48:32.221Z'
                 user:
-                  id: 39
+                  id: 53
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
-              - id: 31
+              - id: 39
                 content: Anothah one.
-                created_at: '2022-06-20T14:43:26.117Z'
-                updated_at: '2022-06-20T14:43:26.117Z'
+                created_at: '2022-06-20T14:48:32.223Z'
+                updated_at: '2022-06-20T14:48:32.223Z'
                 user:
-                  id: 39
+                  id: 53
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
-              - id: 32
+              - id: 40
                 content: Third time's a charm.
-                created_at: '2022-06-20T14:43:26.119Z'
-                updated_at: '2022-06-20T14:43:26.119Z'
+                created_at: '2022-06-20T14:48:32.225Z'
+                updated_at: '2022-06-20T14:48:32.225Z'
                 user:
-                  id: 39
+                  id: 53
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
@@ -238,7 +238,7 @@ paths:
                       type: string
             example:
               tweet:
-                content: Yet another Tweet...
+                content: Yet another tweet...
       responses:
         '200':
           description: creates a Tweet
@@ -258,11 +258,22 @@ paths:
                   user_id:
                     type: integer
               example:
-                id: 33
-                content: Yet another Tweet...
-                created_at: '2022-06-20T14:43:26.141Z'
-                updated_at: '2022-06-20T14:43:26.141Z'
-                user_id: 40
+                id: 41
+                content: Yet another tweet...
+                created_at: '2022-06-20T14:48:32.247Z'
+                updated_at: '2022-06-20T14:48:32.247Z'
+                user_id: 54
+        '401':
+          description: returns an error message if unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: JSON Web Token not found.
   "/api/users":
     get:
       summary: list
@@ -295,11 +306,11 @@ paths:
                       items:
                         nullable: true
               example:
-              - id: 41
+              - id: 55
                 username: dustin.henderson
                 email: dustin.henderson@hawkins.com
-                created_at: '2022-06-20T14:43:26.148Z'
-                updated_at: '2022-06-20T14:43:26.148Z'
+                created_at: '2022-06-20T14:48:32.256Z'
+                updated_at: '2022-06-20T14:48:32.256Z'
                 name:
                 tweets: []
         '401':

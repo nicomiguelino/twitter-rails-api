@@ -24,13 +24,22 @@ RSpec.describe "API::Tweets", type: :request do
   end
 
   describe 'POST /api/tweets' do
-    it 'creates a Tweet' do
-      post api_tweets_create_path, params: {
+    def tweet_params
+      {
         tweet: {
-          content: 'Yet another Tweet...'
+          content: 'Yet another tweet...'
         }
-      }, as: :json
+      }
+    end
+
+    it 'creates a Tweet' do
+      post api_tweets_create_path, params: tweet_params, as: :json
       expect(response.status).to eq(200)
+    end
+
+    it 'returns an error message if unauthorized', :skip_login do
+      post api_tweets_create_path, params: tweet_params, as: :json
+      expect(response.status).to eq(401)
     end
   end
 end
