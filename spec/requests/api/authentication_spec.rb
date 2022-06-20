@@ -43,4 +43,16 @@ RSpec.describe 'API::Authentications', type: :request do
       expect(response.status).to eq(401)
     end
   end
+
+  describe 'POST /api/auth/logout' do
+    it 'returns a confirmation message on success' do
+      post api_logout_path
+      expect(response.status).to eq(200)
+    end
+
+    it 'returns an error message if unauthorized', :skip_login do
+      post api_logout_path
+      expect(response.status).to eq(401)
+    end
+  end
 end

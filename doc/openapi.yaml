@@ -51,11 +51,11 @@ paths:
                   name:
                     nullable: true
               example:
-                id: 203
+                id: 1
                 username: steve.harrington
                 email: steve.harrington@hawkins.com
-                created_at: '2022-06-20T14:01:25.407Z'
-                updated_at: '2022-06-20T14:01:25.407Z'
+                created_at: '2022-06-20T14:14:10.122Z'
+                updated_at: '2022-06-20T14:14:10.122Z'
                 name:
         '400':
           description: returns error message in required fields are are not specified
@@ -120,6 +120,34 @@ paths:
                     type: string
               example:
                 error: Login failed. Unauthorized.
+  "/api/auth/logout":
+    post:
+      summary: logout
+      tags:
+      - API::Authentication
+      responses:
+        '200':
+          description: returns a confirmation message on success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: Logged out successfully.
+        '401':
+          description: returns an error message if unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: JSON Web Token not found.
   "/api/tweets":
     get:
       summary: list
@@ -155,30 +183,30 @@ paths:
                         name:
                           nullable: true
               example:
-              - id: 127
+              - id: 1
                 content: My first tweet. Welcome to Twitter.
-                created_at: '2022-06-20T14:01:25.459Z'
-                updated_at: '2022-06-20T14:01:25.459Z'
+                created_at: '2022-06-20T14:14:10.183Z'
+                updated_at: '2022-06-20T14:14:10.183Z'
                 user:
-                  id: 206
+                  id: 5
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
-              - id: 128
+              - id: 2
                 content: Anothah one.
-                created_at: '2022-06-20T14:01:25.461Z'
-                updated_at: '2022-06-20T14:01:25.461Z'
+                created_at: '2022-06-20T14:14:10.184Z'
+                updated_at: '2022-06-20T14:14:10.184Z'
                 user:
-                  id: 206
+                  id: 5
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
-              - id: 129
+              - id: 3
                 content: Third time's a charm.
-                created_at: '2022-06-20T14:01:25.463Z'
-                updated_at: '2022-06-20T14:01:25.463Z'
+                created_at: '2022-06-20T14:14:10.186Z'
+                updated_at: '2022-06-20T14:14:10.186Z'
                 user:
-                  id: 206
+                  id: 5
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
@@ -225,11 +253,11 @@ paths:
                       items:
                         nullable: true
               example:
-              - id: 207
+              - id: 6
                 username: dustin.henderson
                 email: dustin.henderson@hawkins.com
-                created_at: '2022-06-20T14:01:25.479Z'
-                updated_at: '2022-06-20T14:01:25.479Z'
+                created_at: '2022-06-20T14:14:10.201Z'
+                updated_at: '2022-06-20T14:14:10.201Z'
                 name:
                 tweets: []
         '401':
