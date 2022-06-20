@@ -29,7 +29,7 @@ RSpec.describe "API::Tweets", type: :request do
         tweet: {
           content: 'Yet another Tweet...'
         }
-      }
+      }, as: :json
       expect(response.status).to eq(200)
     end
   end

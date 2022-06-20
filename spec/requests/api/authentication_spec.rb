@@ -11,7 +11,7 @@ RSpec.describe 'API::Authentications', type: :request do
 
   describe 'POST /api/auth/sign_up', :skip_login do
     it 'returns the details of the newly-registered user' do
-      post api_sign_up_path, params: sign_up_params(@credentials)
+      post api_sign_up_path, params: sign_up_params(@credentials), as: :json
       expect(response.status).to eq(200)
     end
 
@@ -20,7 +20,7 @@ RSpec.describe 'API::Authentications', type: :request do
       'are not specified'
     ) do
       post api_sign_up_path,
-        params: sign_up_params(@credentials, except: [:password])
+        params: sign_up_params(@credentials, except: [:password]), as: :json
       expect(response.status).to eq(400)
     end
   end
@@ -51,7 +51,7 @@ RSpec.describe 'API::Authentications', type: :request do
     end
 
     it 'returns an error message if unauthorized', :skip_login do
-      post api_logout_path
+      post api_logout_path, as: :json
       expect(response.status).to eq(401)
     end
   end
