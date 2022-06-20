@@ -9,8 +9,8 @@ RSpec.describe 'API::Authentications', type: :request do
     }
   end
 
-  describe 'GET /api/auth/sign_up' do
-    it 'returns the details of the newly-registered user', :skip_login do
+  describe 'POST /api/auth/sign_up', :skip_login do
+    it 'returns the details of the newly-registered user' do
       post api_sign_up_path, params: sign_up_params(@credentials)
       expect(response.status).to eq(200)
     end
