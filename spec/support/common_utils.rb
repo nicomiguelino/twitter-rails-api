@@ -13,6 +13,6 @@ RSpec.shared_context 'authentication' do
     @user = User.create(**credentials)
 
     post api_login_path,
-      params: {authentication: credentials.except(:username)}
+      params: { authentication: credentials.except(:username) }
   end
 end
