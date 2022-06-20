@@ -51,11 +51,11 @@ paths:
                   name:
                     nullable: true
               example:
-                id: 164
+                id: 203
                 username: steve.harrington
                 email: steve.harrington@hawkins.com
-                created_at: '2022-06-20T13:47:36.746Z'
-                updated_at: '2022-06-20T13:47:36.746Z'
+                created_at: '2022-06-20T14:01:25.407Z'
+                updated_at: '2022-06-20T14:01:25.407Z'
                 name:
         '400':
           description: returns error message in required fields are are not specified
@@ -75,6 +75,51 @@ paths:
                 errors:
                   password:
                   - can't be blank
+  "/api/auth/login":
+    post:
+      summary: login
+      tags:
+      - API::Authentication
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                authentication:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+            example:
+              authentication:
+                email: steve.harrington@hawkins.com
+                password: password
+      responses:
+        '200':
+          description: returns a confirmation message on success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: Logged in successfully.
+        '401':
+          description: returns an error message on failed login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: Login failed. Unauthorized.
   "/api/tweets":
     get:
       summary: list
@@ -110,30 +155,30 @@ paths:
                         name:
                           nullable: true
               example:
-              - id: 112
+              - id: 127
                 content: My first tweet. Welcome to Twitter.
-                created_at: '2022-06-20T13:47:36.777Z'
-                updated_at: '2022-06-20T13:47:36.777Z'
+                created_at: '2022-06-20T14:01:25.459Z'
+                updated_at: '2022-06-20T14:01:25.459Z'
                 user:
-                  id: 165
+                  id: 206
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
-              - id: 113
+              - id: 128
                 content: Anothah one.
-                created_at: '2022-06-20T13:47:36.779Z'
-                updated_at: '2022-06-20T13:47:36.779Z'
+                created_at: '2022-06-20T14:01:25.461Z'
+                updated_at: '2022-06-20T14:01:25.461Z'
                 user:
-                  id: 165
+                  id: 206
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
-              - id: 114
+              - id: 129
                 content: Third time's a charm.
-                created_at: '2022-06-20T13:47:36.780Z'
-                updated_at: '2022-06-20T13:47:36.780Z'
+                created_at: '2022-06-20T14:01:25.463Z'
+                updated_at: '2022-06-20T14:01:25.463Z'
                 user:
-                  id: 165
+                  id: 206
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name:
@@ -180,11 +225,11 @@ paths:
                       items:
                         nullable: true
               example:
-              - id: 166
+              - id: 207
                 username: dustin.henderson
                 email: dustin.henderson@hawkins.com
-                created_at: '2022-06-20T13:47:36.794Z'
-                updated_at: '2022-06-20T13:47:36.794Z'
+                created_at: '2022-06-20T14:01:25.479Z'
+                updated_at: '2022-06-20T14:01:25.479Z'
                 name:
                 tweets: []
         '401':

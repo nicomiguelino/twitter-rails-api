@@ -24,4 +24,23 @@ RSpec.describe 'API::Authentications', type: :request do
       expect(response.status).to eq(400)
     end
   end
+
+  describe 'POST /api/auth/login', :skip_login do
+    before :each do
+      post api_sign_up_path, params: sign_up_params(@credentials)
+    end
+
+    it 'returns a confirmation message on success' do
+      post api_login_path, params: login_params(@credentials)
+      expect(response.status).to eq(200)
+    end
+
+    it 'returns an error message on failed login' do
+      invalid_credentials = @credentials.clone
+      invalid_credentials[:password] = 'password'
+
+      post api_login_path, params: login_params(invalid_credentials)
+      expect(response.status).to eq(401)
+    end
+  end
 end
