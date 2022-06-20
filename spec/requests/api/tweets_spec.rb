@@ -22,4 +22,15 @@ RSpec.describe "API::Tweets", type: :request do
       expect(response.status).to eq(401)
     end
   end
+
+  describe 'POST /api/tweets' do
+    it 'creates a Tweet' do
+      post api_tweets_create_path, params: {
+        tweet: {
+          content: 'Yet another Tweet...'
+        }
+      }
+      expect(response.status).to eq(200)
+    end
+  end
 end
