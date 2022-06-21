@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     end
 
     resources :tweets, only: [:index, :create]
-
-    get '/users', to: 'users#list', as: 'users_list'
+    resources :users, only: [:index]
   end
 end
