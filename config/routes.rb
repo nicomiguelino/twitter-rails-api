@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   namespace :api do
     get '/docs', to: 'rest_docs#index', as: 'rest_api_doc'
 
-    post '/auth/sign_up', to: 'authentication#sign_up', as: 'sign_up'
-    post '/auth/login', to: 'authentication#login', as: 'login'
-    post '/auth/logout', to: 'authentication#logout', as: 'logout'
+    scope '/auth' do
+      post '/sign_up', to: 'authentication#sign_up', as: 'sign_up'
+      post '/login', to: 'authentication#login', as: 'login'
+      post '/logout', to: 'authentication#logout', as: 'logout'
+    end
 
-    get '/tweets', to: 'tweets#list', as: 'tweets_list'
-    post '/tweets', to: 'tweets#create', as: 'tweets_create'
-
-    get '/users', to: 'users#list', as: 'users_list'
+    resources :tweets, only: [:index, :create]
+    resources :users, only: [:index]
   end
 end

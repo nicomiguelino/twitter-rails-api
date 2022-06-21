@@ -13,12 +13,12 @@ RSpec.describe "API::Tweets", type: :request do
         @user.tweets.create content: tweet
       end
 
-      get api_tweets_list_path
+      get api_tweets_path
       expect(response.status).to eq(200)
     end
 
     it 'returns an error', :skip_login do
-      get api_tweets_list_path
+      get api_tweets_path
       expect(response.status).to eq(401)
     end
   end
@@ -33,12 +33,12 @@ RSpec.describe "API::Tweets", type: :request do
     end
 
     it 'creates a Tweet' do
-      post api_tweets_create_path, params: tweet_params, as: :json
+      post api_tweets_path, params: tweet_params, as: :json
       expect(response.status).to eq(200)
     end
 
     it 'returns an error message if unauthorized', :skip_login do
-      post api_tweets_create_path, params: tweet_params, as: :json
+      post api_tweets_path, params: tweet_params, as: :json
       expect(response.status).to eq(401)
     end
   end
