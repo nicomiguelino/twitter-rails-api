@@ -12,8 +12,12 @@ Rails.application.routes.draw do
     post '/auth/login', to: 'authentication#login', as: 'login'
     post '/auth/logout', to: 'authentication#logout', as: 'logout'
 
-    get '/tweets', to: 'tweets#list', as: 'tweets_list'
-    post '/tweets', to: 'tweets#create', as: 'tweets_create'
+    # TODO: Use `resources` instead.
+    # get '/tweets', to: 'tweets#list', as: 'tweets_list'
+    # post '/tweets', to: 'tweets#create', as: 'tweets_create'
+
+    # TODO: Fix affected components.
+    resources :tweets, only: [:index, :create]
 
     get '/users', to: 'users#list', as: 'users_list'
   end
