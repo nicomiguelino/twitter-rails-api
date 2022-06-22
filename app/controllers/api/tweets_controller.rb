@@ -13,18 +13,14 @@ class API::TweetsController < ApplicationController
   end
 
   def create
-    tweet = @current_user.tweets.create(**tweets_create_params)
+    tweet = @current_user.tweets.create(**tweet_params)
     render json: tweet
   end
 
   def show
     begin
-      render json: Tweet.find(params[:id]),
-        except: [:user_id], include: {
-          user: {
-            except: [:password_digest, :created_at, :updated_at]
-          }
-        }
+      tweet = Tweet.find(params[:id])
+      render render_args(tweet)
     rescue StandardError => e
       render json: { error: e.message }, status: :bad_request
     end
@@ -33,12 +29,17 @@ class API::TweetsController < ApplicationController
   def destroy
     begin
       tweet = Tweet.find(params[:id]).destroy
-      render json: tweet,
-        except: [:user_id], include: {
-          user: {
-            except: [:password_digest, :created_at, :updated_at]
-          }
-        }
+      render render_args(tweet)
+    rescue StandardError => e
+      render json: { error: e.message }, status: :bad_request
+    end
+  end
+
+  def update
+    begin
+      tweet = Tweet.find(params[:id])
+      tweet.update(**tweet_params)
+      render render_args(tweet)
     rescue StandardError => e
       render json: { error: e.message }, status: :bad_request
     end
@@ -46,7 +47,18 @@ class API::TweetsController < ApplicationController
 
   private
 
-  def tweets_create_params
+  def tweet_params
     params.require(:tweet).permit(:content)
+  end
+
+  def render_args(tweet, status: :ok)
+    {
+      json: tweet,
+      except: [:user_id], include: {
+        user: {
+          except: [:password_digest, :created_at, :updated_at]
+        }
+      }
+    }
   end
 end
