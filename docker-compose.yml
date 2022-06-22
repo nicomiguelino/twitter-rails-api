@@ -1,0 +1,30 @@
+version: "3.3"
+services:
+  postgres:
+    image: postgres:13-alpine
+    command: ["postgres", "-c", "fsync=false", "-c", "full_page_writes=off"]
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+  app:
+    build:
+      context: .
+      dockerfile: ./app.Dockerfile
+    command: bash -c "bundle exec puma -C config/puma.rb"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx.Dockerfile
+    depends_on:
+      - app
+    ports:
+      - 80:80
+volumes:
+  pg-data:
