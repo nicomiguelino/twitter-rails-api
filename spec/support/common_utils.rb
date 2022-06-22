@@ -7,8 +7,6 @@ RSpec.shared_context 'authentication' do
     { authentication: credentials.except(:name, :username, *except) }
   end
 
-  let(:default_params) { { as: :json } }
-
   before :each do |example|
     credentials = {
       name: 'Dustin Henderson',
