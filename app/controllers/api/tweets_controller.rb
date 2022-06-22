@@ -2,11 +2,14 @@ class API::TweetsController < ApplicationController
   before_action :authorize_request
 
   def index
-    render json: Tweet.all, except: [:user_id], include: {
-      user: {
-        except: [:password_digest, :created_at, :updated_at]
+    render json: Tweet.all,
+      except: [:user_id],
+      methods: [:url],
+      include: {
+        user: {
+          except: [:password_digest, :created_at, :updated_at]
+        }
       }
-    }
   end
 
   def create

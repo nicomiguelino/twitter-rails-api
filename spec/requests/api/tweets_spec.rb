@@ -27,7 +27,7 @@ RSpec.describe "API::Tweets", type: :request do
     def tweet_params
       {
         tweet: {
-          content: 'Yet another tweet...'
+          content: 'Yet another Tweet...'
         }
       }
     end
@@ -39,6 +39,23 @@ RSpec.describe "API::Tweets", type: :request do
 
     it 'returns an error message if unauthorized', :skip_login do
       post api_tweets_path, params: tweet_params, as: :json
+      expect(response.status).to eq(401)
+    end
+  end
+
+  describe 'GET /api/tweets/:id' do
+    before :each do
+      @tweet = @user.tweets.create(content: 'Another one bites the dust!')
+    end
+
+    it 'returns the details of a Tweet' do
+      get api_tweet_path(id: @tweet.id)
+      expect(response.status).to eq(200)
+    end
+
+    it 'returns an error on invalid Tweet ID', :skip_login do
+      tweet = @user.tweets.create(content: 'Another one bites the dust!')
+      get api_tweet_path(id: @tweet.id)
       expect(response.status).to eq(401)
     end
   end
