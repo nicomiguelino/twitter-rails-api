@@ -70,7 +70,7 @@ docker-compose exec app bundle exec rails db:setup
 
 ## Related Issues
 
-- #24
+- nicomiguelino/twitter-rails-api#24
 
 
 
