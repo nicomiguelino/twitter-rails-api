@@ -9,6 +9,7 @@
 def initialize_tweets
   users = [
     {
+      name: 'Mike Wheeler',
       username: 'mike.wheeler',
       email: 'mike.wheeler@hawkins.com',
       password: 'eleven',
@@ -22,11 +23,13 @@ def initialize_tweets
       ]
     },
     {
+      name: 'Will Byers',
       username: 'will.byers',
       email: 'will.byers@hawkins.com',
       password: 'will_the_wise',
     },
     {
+      name: 'Dustin Henderson',
       username: 'dustin.henderson',
       email: 'dustin.henderson@hawkins.com',
       password: 'pearly_whites',

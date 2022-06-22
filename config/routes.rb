@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "api/rest_docs#index"
 
   namespace :api do
     get '/docs', to: 'rest_docs#index', as: 'rest_api_doc'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       post '/logout', to: 'authentication#logout', as: 'logout'
     end
 
-    resources :tweets, only: [:index, :create]
+    resources :tweets, only: [:index, :create, :show]
     resources :users, only: [:index]
   end
 end

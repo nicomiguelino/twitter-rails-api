@@ -31,7 +31,7 @@ RSpec.describe 'API::Authentications', type: :request do
     end
 
     it 'returns a confirmation message on success' do
-      post api_login_path, params: login_params(@credentials)
+      post api_login_path, params: login_params(@credentials), as: :json
       expect(response.status).to eq(200)
     end
 
@@ -39,7 +39,7 @@ RSpec.describe 'API::Authentications', type: :request do
       invalid_credentials = @credentials.clone
       invalid_credentials[:password] = 'password'
 
-      post api_login_path, params: login_params(invalid_credentials)
+      post api_login_path, params: login_params(invalid_credentials), as: :json
       expect(response.status).to eq(401)
     end
   end
