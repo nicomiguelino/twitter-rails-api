@@ -30,6 +30,20 @@ class API::TweetsController < ApplicationController
     end
   end
 
+  def destroy
+    begin
+      tweet = Tweet.find(params[:id]).destroy
+      render json: tweet,
+        except: [:user_id], include: {
+          user: {
+            except: [:password_digest, :created_at, :updated_at]
+          }
+        }
+    rescue StandardError => e
+      render json: { error: e.message }, status: :bad_request
+    end
+  end
+
   private
 
   def tweets_create_params

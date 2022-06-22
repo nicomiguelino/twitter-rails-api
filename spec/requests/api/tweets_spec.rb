@@ -27,7 +27,7 @@ RSpec.describe "API::Tweets", type: :request do
     def tweet_params
       {
         tweet: {
-          content: 'Yet another Tweet...'
+          content: 'Yet another Tweet.'
         }
       }
     end
@@ -53,10 +53,32 @@ RSpec.describe "API::Tweets", type: :request do
       expect(response.status).to eq(200)
     end
 
-    it 'returns an error on invalid Tweet ID', :skip_login do
-      tweet = @user.tweets.create(content: 'Another one bites the dust!')
+    it 'returns an error if unauthorized', :skip_login do
       get api_tweet_path(id: @tweet.id)
       expect(response.status).to eq(401)
+    end
+
+    it 'returns an error if Tweet with a given ID does not exist' do
+      nonexistent_id = ([*1..100] - [@tweet.id]).sample
+      get api_tweet_path(id: nonexistent_id)
+      expect(response.status).to eq(400)
+    end
+  end
+
+  describe 'DELETE /api/tweets/:id' do
+    before :each do
+      @tweet = @user.tweets.create(content: 'Might delete this later.')
+    end
+
+    it 'returns the details of the deleted Tweet' do
+      delete api_tweet_path(id: @tweet.id)
+      expect(response.status).to eq(200)
+    end
+
+    it 'returns an error if Tweet with a given ID does not exist' do
+      nonexistent_id = ([*1..100] - [@tweet.id]).sample
+      delete api_tweet_path(id: nonexistent_id)
+      expect(response.status).to eq(400)
     end
   end
 end

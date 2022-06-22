@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       post '/logout', to: 'authentication#logout', as: 'logout'
     end
 
-    resources :tweets, only: [:index, :create, :show]
+    resources :tweets, only: [:index, :create, :show, :destroy]
     resources :users, only: [:index]
   end
 end
