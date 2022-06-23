@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:1.23.0
 
 RUN apt-get update -qq && \
   apt-get -y install apache2-utils
