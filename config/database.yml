@@ -22,6 +22,6 @@ test:
 
 production:
   <<: *default
-  host: <%= ENV.fetch("TRA_DB_HOST") { "postgres" } %>
+  host: postgres
   database: tra_production
   password: <%= ENV.fetch("TRA_USER_PASSWORD") { password } %>
