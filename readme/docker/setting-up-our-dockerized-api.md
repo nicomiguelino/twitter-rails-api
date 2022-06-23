@@ -92,7 +92,25 @@ a URL like `http://localhost:3030`.
 
 
 
-## Related Issues
+## Deploying new changes to the container
+
+If the app is running, close all the containers first.
+
+```bash
+docker-compose down
+```
+
+Execute the following commands:
+
+```bash
+docker-compose build
+docker-compose up -d
+docker-compose exec bin/rails db:migrate
+```
+
+
+
+## Related issues
 
 - nicomiguelino/twitter-rails-api#24
 
