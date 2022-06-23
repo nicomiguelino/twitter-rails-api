@@ -4,7 +4,7 @@ services:
     image: postgres:13-alpine
     command: ["postgres", "-c", "fsync=false", "-c", "full_page_writes=off"]
     environment:
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${TRA_PG_PASSWORD:-password}
     volumes:
       - pg-data:/var/lib/postgresql/data
     ports:
@@ -14,6 +14,8 @@ services:
       context: .
       dockerfile: ./app.Dockerfile
     command: bash -c "bundle exec puma -C config/puma.rb"
+    environment:
+      TRA_USER_PASSWORD: ${TRA_USER_PASSWORD:-password}
     volumes:
       - .:/app
     depends_on:
