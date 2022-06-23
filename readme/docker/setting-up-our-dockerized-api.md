@@ -77,7 +77,40 @@ docker-compose exec app bundle exec rails db:setup
 
 
 
-## Related Issues
+## Customizing the host port of the API
+
+By default, our Dockerized app can be accessed on port `80`, which is the
+default for HTTP. We can override the settings by setting `TRA_NGINX_HOST_PORT`
+to whatever port number we want.
+
+```bash
+export TRA_NGINX_HOST_PORT=3030
+```
+
+After running the app again, we can access the API docs via the browser using
+a URL like `http://localhost:3030`.
+
+
+
+## Deploying new changes to the container
+
+If the app is running, close all the containers first.
+
+```bash
+docker-compose down
+```
+
+Execute the following commands:
+
+```bash
+docker-compose build
+docker-compose up -d
+docker-compose exec bin/rails db:migrate
+```
+
+
+
+## Related issues
 
 - nicomiguelino/twitter-rails-api#24
 

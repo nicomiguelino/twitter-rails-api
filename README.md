@@ -19,6 +19,11 @@ Ruby on Rails.
 - [Setting up our containerized production-ready API][3]
 
 
+### Heroku
+
+- [Deploying new changes to Heroku][4]
+
+
 
 ## GraphQL API (coming soon)
 
@@ -31,3 +36,4 @@ Stay tuned for updates. :radio:
 [1]: /readme/development/initial-local-development-setup-on-ubuntu-wsl-2.md
 [2]: /readme/development/updating-the-rest-api-documentation.md
 [3]: /readme/docker/setting-up-our-dockerized-api.md
+[4]: /readme/heroku/deploying-new-changes-to-heroku.md

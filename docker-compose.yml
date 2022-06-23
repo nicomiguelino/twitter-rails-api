@@ -27,6 +27,6 @@ services:
     depends_on:
       - app
     ports:
-      - 80:80
+      - ${TRA_NGINX_HOST_PORT:-80}:80
 volumes:
   pg-data:
