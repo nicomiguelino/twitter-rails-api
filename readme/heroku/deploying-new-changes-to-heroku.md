@@ -2,6 +2,14 @@
 
 
 
+## Prerequisites
+
+- [Heroku CLI][4] is already installed on your machine.
+- Make sure that you're logged in. If not, run `heroku login`. You will be
+prompted to enter your login credentials in the browser.
+
+
+
 ## Execution
 
 You only need to execute a couple of commands to get things done. The first
@@ -69,6 +77,8 @@ drop and create databases. Use the `heroku pg:reset` command instead."][2]
 - [Heroku Dev Center - Getting Started on Heroku with Rails 7.x][3]
 
 
+
 [1]: https://gist.github.com/zulhfreelancer/ea140d8ef9292fa9165e
 [2]: https://devcenter.heroku.com/articles/rake#limitations
 [3]: https://devcenter.heroku.com/articles/getting-started-with-rails7
+[4]: https://devcenter.heroku.com/articles/heroku-cli
