@@ -43,10 +43,19 @@ which is the name of the relevant service defined in our `docker-compose.yml`.
 docker-compose exec postgres psql -U postgres
 ```
 
-Enter the following SQL commands.
+If you didn't set the `TRA_USER_PASSWORD` recently, enter the following
+SQL commands:
 
 ```sql
 CREATE USER tra_user WITH PASSWORD 'password';
+ALTER USER tra_user CREATEDB;
+```
+
+Say that you've set `TRA_USER_PASSWORD` to `nokia3310`. If so, enter the
+following instead:
+
+```sql
+CREATE USER tra_user WITH PASSWORD 'nokia3310';
 ALTER USER tra_user CREATEDB;
 ```
 
