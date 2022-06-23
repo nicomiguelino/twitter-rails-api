@@ -75,6 +75,7 @@ drop and create databases. Use the `heroku pg:reset` command instead."][2]
 - [GitHub Gist - How to reset PG database on Heroku?][1]
 - [Heroku Dev Center - Running Rake Commands - Limitations][2]
 - [Heroku Dev Center - Getting Started on Heroku with Rails 7.x][3]
+- [Heroku Dev Center - The Heroku CLI][4]
 
 
 
