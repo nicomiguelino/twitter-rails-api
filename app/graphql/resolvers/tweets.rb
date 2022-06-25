@@ -12,6 +12,7 @@ module Resolvers::Tweets
 
   class DetailResolver < Resolvers::BaseResolver
     include Mixins::Authorization
+    include Mixins::Tweets
 
     description 'Find a Tweet by ID'
     type Types::TweetType, null: false
@@ -19,14 +20,7 @@ module Resolvers::Tweets
     argument :id, ID
 
     def resolve(id:)
-      # TODO: Refactor into a module, e.g. mixins/authorization.
-      begin
-        Tweet.find(id)
-      rescue StandardError => e
-        raise GraphQL::ExecutionError.new(
-          e.message, extensions: { status: 400 }
-        )
-      end
+      return get_tweet_by_id(id)
     end
   end
 end
