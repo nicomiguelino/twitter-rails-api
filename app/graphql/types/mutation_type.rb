@@ -1,8 +1,6 @@
 module Types
   class MutationType < Types::BaseObject
-    field :create_tweet, TweetType, 'Create a Tweet', null: false  do
-      argument :content, String
-    end
+    field :create_tweet, resolver: Resolvers::Tweets::CreateResolver
 
     field :update_tweet, TweetType, 'Update a Tweet', null: false do
       argument :id, ID
@@ -11,12 +9,6 @@ module Types
 
     field :delete_tweet, TweetType, 'Delete a Tweet', null: false do
       argument :id, ID
-    end
-
-    def create_tweet(content:)
-      authorize
-      user = context[:current_user]
-      user.tweets.create(content: content)
     end
 
     def update_tweet(id:, content:)

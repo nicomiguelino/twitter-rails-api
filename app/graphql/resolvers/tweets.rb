@@ -23,4 +23,17 @@ module Resolvers::Tweets
       return get_tweet_by_id(id)
     end
   end
+
+  class CreateResolver < Resolvers::BaseResolver
+    include Mixins::Authorization
+
+    description 'Create a Tweet'
+    type Types::TweetType, null: false
+
+    argument :content, String
+
+    def resolve(content:)
+      context[:current_user].tweets.create(content: content)
+    end
+  end
 end
