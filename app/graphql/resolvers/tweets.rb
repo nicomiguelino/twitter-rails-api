@@ -36,4 +36,21 @@ module Resolvers::Tweets
       context[:current_user].tweets.create(content: content)
     end
   end
+
+  class UpdateResolver < Resolvers::BaseResolver
+    include Mixins::Authorization
+    include Mixins::Tweets
+
+    description 'Update a Tweet'
+    type Types::TweetType, null: false
+
+    argument :id, ID
+    argument :content, String
+
+    def resolve(id:, content:)
+      tweet = get_tweet_by_id(id)
+      tweet.update(content: content)
+      return tweet
+    end
+  end
 end
