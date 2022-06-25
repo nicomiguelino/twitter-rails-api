@@ -53,4 +53,18 @@ module Resolvers::Tweets
       return tweet
     end
   end
+
+  class DeleteResolver < Resolvers::BaseResolver
+    include Mixins::Authorization
+    include Mixins::Tweets
+
+    description 'Delete a Tweet'
+    type Types::TweetType, null: false
+
+    argument :id, ID
+
+    def resolve(id:)
+      get_tweet_by_id(id).destroy
+    end
+  end
 end
