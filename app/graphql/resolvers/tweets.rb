@@ -1,4 +1,20 @@
 module Resolvers::Tweets
+  module HasCreatedTweet
+    include Mixins::Authorization
+    include Mixins::Tweets
+
+    def authorized?(object = nil, args = nil, ctx = nil)
+      if !object&.include?(:id)
+        return false
+      end
+
+      tweet = get_tweet_by_id(object[:id])
+      user = context[:current_user]
+
+      return is_logged_in && user.id == tweet.user_id
+    end
+  end
+
   class ListResolver < Resolvers::BaseResolver
     include Mixins::Authorization
 
@@ -38,8 +54,7 @@ module Resolvers::Tweets
   end
 
   class UpdateResolver < Resolvers::BaseResolver
-    include Mixins::Authorization
-    include Mixins::Tweets
+    include HasCreatedTweet
 
     description 'Update a Tweet'
     type Types::TweetType, null: false
@@ -55,8 +70,7 @@ module Resolvers::Tweets
   end
 
   class DeleteResolver < Resolvers::BaseResolver
-    include Mixins::Authorization
-    include Mixins::Tweets
+    include HasCreatedTweet
 
     description 'Delete a Tweet'
     type Types::TweetType, null: false
