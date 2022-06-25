@@ -7,7 +7,7 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    field :tweets, [TweetType], 'Get all Tweets', null: false
+    field :tweets, resolver: Resolvers::Tweets::ListResolver
     field :tweet, TweetType, 'Find a Tweet by ID' do
       argument :id, ID
     end
@@ -15,11 +15,6 @@ module Types
     field :users, [UserType], 'Get all the registered users', null: false
     field :user, UserType, 'Find a User by ID', null: false do
       argument :id, ID
-    end
-
-    def tweets
-      authorize
-      Tweet.all
     end
 
     def tweet(id:)

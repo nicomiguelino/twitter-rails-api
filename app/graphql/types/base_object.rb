@@ -4,6 +4,7 @@ module Types
     connection_type_class(Types::BaseConnection)
     field_class Types::BaseField
 
+    # TODO: Remove if not needed.
     def authorize
       if context[:current_user].nil?
         raise GraphQL::ExecutionError.new(
