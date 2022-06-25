@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       post '/sign_up', to: 'authentication#sign_up', as: 'sign_up'
       post '/login', to: 'authentication#login', as: 'login'
       post '/logout', to: 'authentication#logout', as: 'logout'
+      get '/is_logged_in', to: 'authentication#is_logged_in',
+        as: 'is_logged_in'
     end
 
     resources :tweets, only: [:index, :create, :show, :destroy, :update]

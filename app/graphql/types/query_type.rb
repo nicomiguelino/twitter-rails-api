@@ -4,6 +4,15 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
+    def authorize
+      if context[:current_user].nil?
+          raise GraphQL::ExecutionError.new(
+            "You don't have enough permissions.",
+            extensions: { status: 401 }
+          )
+      end
+    end
+
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
@@ -18,6 +27,7 @@ module Types
     end
 
     def tweets
+      authorize
       Tweet.all
     end
 
