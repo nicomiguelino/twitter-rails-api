@@ -10,14 +10,9 @@ module Types
     field :tweets, resolver: Resolvers::Tweets::ListResolver
     field :tweet, resolver: Resolvers::Tweets::DetailResolver
 
-    field :users, [UserType], 'Get all the registered users', null: false
+    field :users, resolver: Resolvers::Users::ListResolver
     field :user, UserType, 'Find a User by ID', null: false do
       argument :id, ID
-    end
-
-    def users
-      authorize
-      User.all
     end
 
     def user(id:)
