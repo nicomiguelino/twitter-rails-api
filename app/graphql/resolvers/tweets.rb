@@ -11,7 +11,19 @@ module Resolvers::Tweets
       tweet = get_tweet_by_id(object[:id])
       user = context[:current_user]
 
-      return is_logged_in && user.id == tweet.user_id
+      is_authorized = is_logged_in && user.id == tweet.user_id
+
+      if !is_authorized
+          raise GraphQL::ExecutionError.new(
+            (
+              'Only the Tweets that you\'ve created are available for ' \
+              'update or removal.'
+            ),
+            extensions: { status: 401 }
+          )
+      end
+
+      return is_authorized
     end
   end
 
