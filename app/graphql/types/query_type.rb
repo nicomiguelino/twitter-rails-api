@@ -11,13 +11,6 @@ module Types
     field :tweet, resolver: Resolvers::Tweets::DetailResolver
 
     field :users, resolver: Resolvers::Users::ListResolver
-    field :user, UserType, 'Find a User by ID', null: false do
-      argument :id, ID
-    end
-
-    def user(id:)
-      authorize
-      User.find(id)
-    end
+    field :user, resolver: Resolvers::Users::DetailResolver
   end
 end

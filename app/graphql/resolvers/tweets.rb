@@ -32,7 +32,6 @@ module Resolvers::Tweets
 
     description 'Find a Tweet by ID'
     type Types::TweetType, null: false
-
     argument :id, ID
 
     def resolve(id:)
@@ -45,7 +44,6 @@ module Resolvers::Tweets
 
     description 'Create a Tweet'
     type Types::TweetType, null: false
-
     argument :content, String
 
     def resolve(content:)
@@ -74,7 +72,6 @@ module Resolvers::Tweets
 
     description 'Delete a Tweet'
     type Types::TweetType, null: false
-
     argument :id, ID
 
     def resolve(id:)
