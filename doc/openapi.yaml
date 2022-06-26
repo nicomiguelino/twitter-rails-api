@@ -51,11 +51,11 @@ paths:
                   name:
                     nullable: true
               example:
-                id: 376
+                id: 2
                 username: steve.harrington
                 email: steve.harrington@hawkins.com
-                created_at: '2022-06-26T09:20:53.362Z'
-                updated_at: '2022-06-26T09:20:53.362Z'
+                created_at: '2022-06-26T13:07:02.656Z'
+                updated_at: '2022-06-26T13:07:02.656Z'
                 name:
         '400':
           description: returns error message in required fields are are not specified
@@ -185,33 +185,33 @@ paths:
                         name:
                           type: string
               example:
-              - id: 188
+              - id: 1
                 content: My first tweet. Welcome to Twitter.
-                created_at: '2022-06-26T09:20:53.463Z'
-                updated_at: '2022-06-26T09:20:53.463Z'
-                url: "/api/tweets/188"
+                created_at: '2022-06-26T13:07:02.750Z'
+                updated_at: '2022-06-26T13:07:02.750Z'
+                url: "/api/tweets/1"
                 user:
-                  id: 384
+                  id: 10
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name: Dustin Henderson
-              - id: 189
+              - id: 2
                 content: Anothah one.
-                created_at: '2022-06-26T09:20:53.466Z'
-                updated_at: '2022-06-26T09:20:53.466Z'
-                url: "/api/tweets/189"
+                created_at: '2022-06-26T13:07:02.753Z'
+                updated_at: '2022-06-26T13:07:02.753Z'
+                url: "/api/tweets/2"
                 user:
-                  id: 384
+                  id: 10
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name: Dustin Henderson
-              - id: 190
+              - id: 3
                 content: Third time's a charm.
-                created_at: '2022-06-26T09:20:53.468Z'
-                updated_at: '2022-06-26T09:20:53.468Z'
-                url: "/api/tweets/190"
+                created_at: '2022-06-26T13:07:02.755Z'
+                updated_at: '2022-06-26T13:07:02.755Z'
+                url: "/api/tweets/3"
                 user:
-                  id: 384
+                  id: 10
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name: Dustin Henderson
@@ -263,11 +263,11 @@ paths:
                   user_id:
                     type: integer
               example:
-                id: 191
+                id: 4
                 content: Yet another Tweet.
-                created_at: '2022-06-26T09:20:53.496Z'
-                updated_at: '2022-06-26T09:20:53.496Z'
-                user_id: 386
+                created_at: '2022-06-26T13:07:02.784Z'
+                updated_at: '2022-06-26T13:07:02.784Z'
+                user_id: 12
         '401':
           description: returns an error message if unauthorized
           content:
@@ -290,7 +290,7 @@ paths:
         required: true
         schema:
           type: integer
-        example: 16
+        example: 5
       responses:
         '200':
           description: returns the details of a Tweet
@@ -319,12 +319,12 @@ paths:
                       name:
                         type: string
               example:
-                id: 192
+                id: 5
                 content: Another one bites the dust!
-                created_at: '2022-06-26T09:20:53.516Z'
-                updated_at: '2022-06-26T09:20:53.516Z'
+                created_at: '2022-06-26T13:07:02.803Z'
+                updated_at: '2022-06-26T13:07:02.803Z'
                 user:
-                  id: 388
+                  id: 14
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name: Dustin Henderson
@@ -349,7 +349,7 @@ paths:
                   error:
                     type: string
               example:
-                error: Couldn't find Tweet with 'id'=96
+                error: Couldn't find Tweet with 'id'=43
     put:
       summary: update
       tags:
@@ -360,7 +360,7 @@ paths:
         required: true
         schema:
           type: integer
-        example: 19
+        example: 8
       requestBody:
         content:
           application/json:
@@ -404,11 +404,11 @@ paths:
                         type: string
               example:
                 content: Yet another Tweet.
-                id: 195
-                created_at: '2022-06-26T09:20:53.554Z'
-                updated_at: '2022-06-26T09:20:53.558Z'
+                id: 8
+                created_at: '2022-06-26T13:07:02.841Z'
+                updated_at: '2022-06-26T13:07:02.846Z'
                 user:
-                  id: 391
+                  id: 17
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name: Dustin Henderson
@@ -422,7 +422,7 @@ paths:
                   error:
                     type: string
               example:
-                error: Couldn't find Tweet with 'id'=26
+                error: Couldn't find Tweet with 'id'=16
     delete:
       summary: destroy
       tags:
@@ -433,7 +433,7 @@ paths:
         required: true
         schema:
           type: integer
-        example: 21
+        example: 10
       responses:
         '200':
           description: returns the details of the deleted Tweet
@@ -462,12 +462,12 @@ paths:
                       name:
                         type: string
               example:
-                id: 197
+                id: 10
                 content: Might delete this later.
-                created_at: '2022-06-26T09:20:53.583Z'
-                updated_at: '2022-06-26T09:20:53.583Z'
+                created_at: '2022-06-26T13:07:02.870Z'
+                updated_at: '2022-06-26T13:07:02.870Z'
                 user:
-                  id: 393
+                  id: 19
                   username: dustin.henderson
                   email: dustin.henderson@hawkins.com
                   name: Dustin Henderson
@@ -481,7 +481,7 @@ paths:
                   error:
                     type: string
               example:
-                error: Couldn't find Tweet with 'id'=54
+                error: Couldn't find Tweet with 'id'=3
   "/api/users":
     get:
       summary: index
@@ -514,11 +514,11 @@ paths:
                       items:
                         nullable: true
               example:
-              - id: 395
+              - id: 21
                 username: dustin.henderson
                 email: dustin.henderson@hawkins.com
-                created_at: '2022-06-26T09:20:53.605Z'
-                updated_at: '2022-06-26T09:20:53.605Z'
+                created_at: '2022-06-26T13:07:02.893Z'
+                updated_at: '2022-06-26T13:07:02.893Z'
                 name: Dustin Henderson
                 tweets: []
         '401':
