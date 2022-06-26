@@ -23,14 +23,14 @@ cd $PATH_TO_PROJECT/twitter-rails-api/
 ### Build images based on the services defined in our `docker-compose.yml`
 
 ```bash
-docker-compose build
+docker-compose -f docker-compose.prod.yml build
 ```
 
 
 ### Start our API service (as a background process)
 
 ```bash
-docker-compose up -d
+docker-compose -f docker-compose.prod.yml up -d
 ```
 
 
@@ -40,7 +40,7 @@ Take note that the first occurrence of `postgres` refers to the service name,
 which is the name of the relevant service defined in our `docker-compose.yml`.
 
 ```bash
-docker-compose exec postgres psql -U postgres
+docker-compose -f docker-compose.prod.yml exec postgres psql -U postgres
 ```
 
 If you didn't set the `TRA_USER_PASSWORD` recently, enter the following
@@ -72,7 +72,7 @@ Executing the command below will "[create] all databases, loads all schemas,
 and initializes with the seed data [defined in `db/seeds.rb`]."
 
 ```bash
-docker-compose exec app bundle exec rails db:setup
+docker-compose -f docker-compose.prod.html exec app bundle exec rails db:setup
 ```
 
 
@@ -97,15 +97,15 @@ a URL like `http://localhost:3030`.
 If the app is running, close all the containers first.
 
 ```bash
-docker-compose down
+docker-compose -f docker-compose.prod.yml down
 ```
 
 Execute the following commands:
 
 ```bash
-docker-compose build
-docker-compose up -d
-docker-compose exec bin/rails db:migrate
+docker-compose -f docker-compose.prod.yml build
+docker-compose -f docker-compose.prod.yml up -d
+docker-compose -f docker-compose.prod.yml exec bin/rails db:migrate
 ```
 
 
