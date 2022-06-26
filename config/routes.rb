@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/docs', to: 'rest_docs#index', as: 'rest_api_doc'
+    get '/schema', to: 'rest_docs#schema', as: 'rest_api_schema'
 
     scope '/auth' do
       post '/sign_up', to: 'authentication#sign_up', as: 'sign_up'
