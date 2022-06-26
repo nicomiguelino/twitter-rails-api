@@ -44,6 +44,13 @@ class API::AuthenticationController < ApplicationController
     end
   end
 
+  def is_logged_in
+    render json: {
+      username: @current_user.username,
+      display_name: @current_user.name
+    }
+  end
+
   private
 
   def sign_up_params

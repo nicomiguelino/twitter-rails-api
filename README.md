@@ -24,10 +24,10 @@ Ruby on Rails.
 - [Deploying new changes to Heroku][4]
 
 
+### GraphQL
 
-## GraphQL API (coming soon)
+- [Getting started with the GraphQL API][5]
 
-Stay tuned for updates. :radio:
 
 
 
@@ -37,3 +37,4 @@ Stay tuned for updates. :radio:
 [2]: /readme/development/updating-the-rest-api-documentation.md
 [3]: /readme/docker/setting-up-our-dockerized-api.md
 [4]: /readme/heroku/deploying-new-changes-to-heroku.md
+[5]: /readme/graphql/getting-started-with-the-graphql-api.md
