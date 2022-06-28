@@ -1,4 +1,4 @@
-# Setting up our containerized production-ready API
+# Setting up the Dockerized production instance
 
 
 
@@ -20,7 +20,7 @@ cd $PATH_TO_PROJECT/twitter-rails-api/
 ```
 
 
-### Build images based on the services defined in our `docker-compose.yml`
+### Build images based on the services defined in our `docker-compose.prod.yml`
 
 ```bash
 docker-compose -f docker-compose.prod.yml build
@@ -37,7 +37,7 @@ docker-compose -f docker-compose.prod.yml up -d
 ### Open the PostgreSQL interactive terminal, `psql`
 
 Take note that the first occurrence of `postgres` refers to the service name,
-which is the name of the relevant service defined in our `docker-compose.yml`.
+which is the name of the relevant service defined in our `docker-compose.prod.yml`.
 
 ```bash
 docker-compose -f docker-compose.prod.yml exec postgres-prod psql -U postgres

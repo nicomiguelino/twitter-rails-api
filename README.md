@@ -16,7 +16,7 @@ Ruby on Rails.
 
 ### Docker
 
-- [Setting up the Dockerized instance][3]
+- [Setting up the Dockerized production instance][3]
 - [Setting up the Dockerized development instance][6]
 
 
