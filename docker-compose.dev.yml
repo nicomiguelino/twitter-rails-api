@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  postgres-dev:
+    image: postgres:13-alpine
+    command: ["postgres", "-c", "fsync=false", "-c", "full_page_writes=off"]
+    environment:
+      POSTGRES_PASSWORD: ${TRA_DEV_PG_PASSWORD:-password}
+    volumes:
+      - pg-dev-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  app-dev:
+    build:
+      context: .
+      dockerfile: ./docker/dev/app.Dockerfile
+    environment:
+      TRA_DEV_USER_PASSWORD: ${TRA_DEV_USER_PASSWORD:-password}
+      TRA_DEV_DB_HOST: postgres-dev
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres-dev
+volumes:
+  pg-dev-data:

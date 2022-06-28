@@ -16,7 +16,8 @@ Ruby on Rails.
 
 ### Docker
 
-- [Setting up our containerized production-ready API][3]
+- [Setting up the Dockerized production instance][3]
+- [Setting up the Dockerized development instance][6]
 
 
 ### Heroku
@@ -35,6 +36,7 @@ Ruby on Rails.
 
 [1]: /readme/development/initial-local-development-setup-on-ubuntu-wsl-2.md
 [2]: /readme/development/updating-the-rest-api-documentation.md
-[3]: /readme/docker/setting-up-our-dockerized-api.md
+[3]: /readme/docker/setting-up-dockerized-prod-instance.md
 [4]: /readme/heroku/deploying-new-changes-to-heroku.md
 [5]: /readme/graphql/getting-started-with-the-graphql-api.md
+[6]: /readme/docker/setting-up-dockerized-dev-instance.md

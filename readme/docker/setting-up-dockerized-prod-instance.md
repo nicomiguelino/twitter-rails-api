@@ -1,4 +1,4 @@
-# Setting up our containerized production-ready API
+# Setting up the Dockerized production instance
 
 
 
@@ -20,7 +20,7 @@ cd $PATH_TO_PROJECT/twitter-rails-api/
 ```
 
 
-### Build images based on the services defined in our `docker-compose.yml`
+### Build images based on the services defined in our `docker-compose.prod.yml`
 
 ```bash
 docker-compose -f docker-compose.prod.yml build
@@ -37,13 +37,13 @@ docker-compose -f docker-compose.prod.yml up -d
 ### Open the PostgreSQL interactive terminal, `psql`
 
 Take note that the first occurrence of `postgres` refers to the service name,
-which is the name of the relevant service defined in our `docker-compose.yml`.
+which is the name of the relevant service defined in our `docker-compose.prod.yml`.
 
 ```bash
-docker-compose -f docker-compose.prod.yml exec postgres psql -U postgres
+docker-compose -f docker-compose.prod.yml exec postgres-prod psql -U postgres
 ```
 
-If you didn't set the `TRA_USER_PASSWORD` recently, enter the following
+If you didn't set the `TRA_PROD_USER_PASSWORD` recently, enter the following
 SQL commands:
 
 ```sql
@@ -51,7 +51,7 @@ CREATE USER tra_user WITH PASSWORD 'password';
 ALTER USER tra_user CREATEDB;
 ```
 
-Say that you've set `TRA_USER_PASSWORD` to `nokia3310`. If so, enter the
+Say that you've set `TRA_PROD_USER_PASSWORD` to `nokia3310`. If so, enter the
 following instead:
 
 ```sql
@@ -72,7 +72,7 @@ Executing the command below will "[create] all databases, loads all schemas,
 and initializes with the seed data [defined in `db/seeds.rb`]."
 
 ```bash
-docker-compose -f docker-compose.prod.html exec app bundle exec rails db:setup
+docker-compose -f docker-compose.prod.yml exec app-prod bundle exec rails db:setup
 ```
 
 
@@ -105,7 +105,7 @@ Execute the following commands:
 ```bash
 docker-compose -f docker-compose.prod.yml build
 docker-compose -f docker-compose.prod.yml up -d
-docker-compose -f docker-compose.prod.yml exec bin/rails db:migrate
+docker-compose -f docker-compose.prod.yml exec app-prod bin/rails db:migrate
 ```
 
 
