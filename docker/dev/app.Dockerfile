@@ -20,7 +20,4 @@ COPY . /app
 
 EXPOSE 3000
 
-ENV RAILS_ENV=production
-ENV SECRET_KEY_BASE=1
-
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+ENV RAILS_ENV=development
