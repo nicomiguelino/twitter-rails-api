@@ -3,5 +3,7 @@ module Types
     field :create_tweet, resolver: Resolvers::Tweets::CreateResolver
     field :update_tweet, resolver: Resolvers::Tweets::UpdateResolver
     field :delete_tweet, resolver: Resolvers::Tweets::DeleteResolver
+
+    field :login, resolver: Resolvers::Authentication::LoginResolver
   end
 end
