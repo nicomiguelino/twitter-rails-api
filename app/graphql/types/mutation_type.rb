@@ -5,5 +5,6 @@ module Types
     field :delete_tweet, resolver: Resolvers::Tweets::DeleteResolver
 
     field :login, resolver: Resolvers::Authentication::LoginResolver
+    field :logout, resolver: Resolvers::Authentication::LogoutResolver
   end
 end
