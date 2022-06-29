@@ -7,7 +7,9 @@
 - The project now supports GraphQL.
 - The GraphQL endpoint URL is `/graphql`.
 - The GraphiQL (an IDE for our API) URL is `/graphiql`, which can only be
-accessed during development.
+accessed during development. This will be **deprecated soon**.
+- The GraphQL Playground can be accessed on the browser via
+`/graphql/playground`
 
 
 
