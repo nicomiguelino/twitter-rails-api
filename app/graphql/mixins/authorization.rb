@@ -5,6 +5,7 @@ module Mixins::Authorization
     def is_logged_in
       !context[:current_user].nil?
     end
+
     def authorized?(object = nil, args = nil, ctx = nil)
       is_logged_in
     end
