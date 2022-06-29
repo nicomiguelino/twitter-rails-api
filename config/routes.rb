@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ('/')
   root 'api/rest_docs#index'
-  post '/graphql', to: 'graphql#execute'
+  post '/graphql', to: 'graphql#execute', as: 'graphql'
+  get '/graphql/playground', to: 'graphql_docs#playground',
+    as: 'graphql_playground'
 
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: '/graphiql',
