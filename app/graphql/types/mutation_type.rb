@@ -6,5 +6,6 @@ module Types
 
     field :login, resolver: Resolvers::Authentication::LoginResolver
     field :logout, resolver: Resolvers::Authentication::LogoutResolver
+    field :sign_up, resolver: Resolvers::Authentication::SignUpResolver
   end
 end

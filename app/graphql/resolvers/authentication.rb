@@ -59,4 +59,33 @@ module Resolvers::Authentication
       end
     end
   end
+
+  class SignUpResolver < Resolvers::BaseResolver
+    description 'Sign up to create a user account'
+    type Types::UserType, null: false
+
+    argument :username, String
+    argument :email, String
+    argument :password, String
+
+    def resolve(username:, email:, password:)
+      user = User.new(
+        username: username,
+        email: email,
+        password: password
+      )
+
+      if user.save
+        return user
+      else
+        raise GraphQL::ExecutionError.new(
+          'Oops! We cannot sign you up.',
+          extensions: {
+            status: 400,
+            errors: user.errors
+          }
+        )
+      end
+    end
+  end
 end
