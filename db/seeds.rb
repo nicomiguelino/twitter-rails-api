@@ -52,4 +52,28 @@ def initialize_tweets
   end
 end
 
+def initialize_comments
+  users_hash = {
+    mike: User.find_by_username('mike.wheeler'),
+    will: User.find_by_username('will.byers'),
+    dustin: User.find_by_username('dustin.henderson')
+  }
+
+  tweets = Tweet.all
+
+  tweets[0].comments.create(
+    content: 'First comment!',
+    user: users_hash[:mike]
+  )
+  tweets[1].comments.create(
+    content: 'Another one!',
+    user: users_hash[:will]
+  )
+  tweets[2].comments.create(
+    content: 'Third time\'s a charm!',
+    user: users_hash[:dustin]
+  )
+end
+
 initialize_tweets
+initialize_comments
