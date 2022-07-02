@@ -1,9 +1,9 @@
 class Tweet < ApplicationRecord
   include Rails.application.routes.url_helpers
+  include Content
+
   belongs_to :user
   has_many :comments, dependent: :destroy
-
-  validates :content, length: { in: 1..280 }
 
   def url
     api_tweet_path(self)
